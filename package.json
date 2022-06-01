@@ -1,0 +1,28 @@
+{
+  "name": "simple-http-server",
+  "version": "0.0.1",
+  "description": "テスト用とかの簡易httpサーバ",
+  "main": "build/app.mjs",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mentai-mayo/simple-http-server.git"
+  },
+  "keywords": [
+    "http-server",
+    "typescript",
+    "node.js"
+  ],
+  "author": "mentai-mayo",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/mentai-mayo/simple-http-server/issues"
+  },
+  "homepage": "https://github.com/mentai-mayo/simple-http-server#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.38",
+    "typescript": "^4.7.2"
+  }
+}
