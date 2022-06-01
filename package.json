@@ -2,8 +2,9 @@
   "name": "simple-http-server",
   "version": "0.0.1",
   "description": "テスト用とかの簡易httpサーバ",
-  "main": "build/app.mjs",
+  "main": "build/app.js",
   "scripts": {
+    "test": "npx tsc; echo ----------; node --es-module-specifier-resolution=node build/app.js",
     "build": "npx tsc"
   },
   "repository": {
@@ -24,5 +25,6 @@
   "devDependencies": {
     "@types/node": "^17.0.38",
     "typescript": "^4.7.2"
-  }
+  },
+  "type": "module"
 }
