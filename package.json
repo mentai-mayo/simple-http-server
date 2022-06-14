@@ -1,11 +1,12 @@
 {
   "name": "simple-http-server",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "テスト用とかの簡易httpサーバ",
-  "main": "build/app.js",
+  "main": "build/app.mjs",
   "scripts": {
-    "test": "npx tsc; echo ----------; node --es-module-specifier-resolution=node build/app.js",
-    "build": "npx tsc"
+    "test": "npx tsc; cp source/index.min.html build/; cp source/content-type.json build/; echo \"----- >< ----- >< -----\"; node build/app.mjs",
+    "build": "npx tsc; cp source/index.min.html build/; cp source/content-type.json build/;",
+    "start": "node build/app.mjs"
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,7 @@
   },
   "homepage": "https://github.com/mentai-mayo/simple-http-server#readme",
   "devDependencies": {
-    "@types/node": "^17.0.38",
-    "typescript": "^4.7.2"
-  },
-  "type": "module"
+    "@types/node": "^17.0.42",
+    "typescript": "^4.7.3"
+  }
 }

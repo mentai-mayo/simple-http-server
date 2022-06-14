@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: block;
+        position: absolute;
+        width: 100%;
+        min-height: 100%;
+        left: 0;
+        top: 0;
+        background-color: #aaa;
+        font-size: 16pt;
+      }
+
+      #contents {
+        display: grid;
+        width: 100vh;
+        margin: 0 auto;
+      }
+
+      #dirname > span {
+        margin: 0 5px;
+      }
+      #dirname > a {
+        text-decoration: none;
+      }
+      #dirname > a:nth-child(1) {
+        color: rgba(0, 0, 0, 0);
+      }
+
+      #contents > hr {
+        border: none;
+        border-bottom: 1px solid #000;
+      }
+
+      #children {
+        margin-top: 10px;
+      }
+      #children > div {
+        display: grid;
+        grid-template-columns: 32px 1fr;
+      }
+      #children > div > a {
+        margin: 0 auto 0 10px;
+      }
+
+      #assets {
+        display: none;
+      }
+    </style>
+    <script>
+      // const dirinfo = JSON.parse(`?dirinfo?`); // 本番用
+      const dirinfo = [
+        { name: `.gitignore`, type: `file` },
+        { name: `licence`, type: `file` },
+        { name: `node_modules`, type: `dir` },
+        { name: `package-lock.json`, type: `file` },
+        { name: `package.json`, type: `file` },
+        { name: `readme.md`, type: `file` },
+        { name: `sample`, type: `api` },
+        { name: `source`, type: `dir` },
+        { name: `test`, type: `dir` },
+        { name: `tsconfig.json`, type: `file` },
+      ]; // テスト用
+
+      // onload
+      window.addEventListener('load', ()=>{
+        
+        // set dirname
+        const dirname = location.pathname.replace(/\/$/, '');
+        document.title = dirname || '/';
+        dirname.split(/\//g).forEach((name, index, array)=>{
+          const elm = document.createElement('a');
+          elm.innerText = name || '_';
+          elm.href = index ? array.slice(0, index + 1).join('/') : '/';
+          document.querySelector('#dirname').appendChild(elm);
+          document.querySelector('#dirname').appendChild(((elm)=>{elm.innerText = '/'; return elm;})(document.createElement('span')));
+        });
+
+        // set children name
+        dirinfo.forEach((info)=>{
+          const child = document.createElement('div');
+          const icon = document.querySelector('#assets > svg.icon-dir').cloneNode();
+          if(info.type == 'dir')
+            icon.appendChild(document.querySelector('#assets > svg.icon-dir > path').cloneNode());
+          if(info.type == 'file')
+            icon.appendChild(document.querySelector('#assets > svg.icon-file > path').cloneNode());
+          if(info.type == 'api')
+            icon.appendChild(document.querySelector('#assets > svg.icon-api > path').cloneNode());
+          child.appendChild(icon);
+          const anchor = document.createElement('a');
+          anchor.innerText = info.name;
+          anchor.href = dirname + '/' + info.name;
+          child.appendChild(anchor);
+          document.querySelector('#children').appendChild(child);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="contents">
+      <div id="dirname"></div>
+      <hr>
+      <div id="children"></duv>
+    </div>
+    <div id="assets">
+      <svg viewBox="0 0 32 32" class="icon-file" width="32" height="32">
+        <path d="M7,4 L19,4 L24,9 L24,27 L7,27 L7,4 M18,4 L18,10 L24,10" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <svg viewBox="0 0 32 32" class="icon-dir" width="32" height="32">
+        <path d="M4,6 L10,6 L13,9 L27,9 L27,25 L4,25 L4,6" fill="#000" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <svg viewBox="0 0 32 32" class="icon-api" width="32" height="32">
+        <path d="M9,7 L23,15.5 L9,25" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+  </body>
+</html>

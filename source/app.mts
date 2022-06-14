@@ -1,6 +1,6 @@
 import process from 'process';
 
-import main from './main';
+import main from './main.mjs';
 
 export type Meta = {
 

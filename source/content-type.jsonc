@@ -1,0 +1,41 @@
+{
+  // no extension
+  "": "text/plain", // plain text
+
+  // text
+  ".txt":    "text/plain",      // plain text
+  ".json":   "text/json",       // json
+  ".jsonld": "text/json+ld",    // json-ld
+  ".csv":    "text/csv",        // csv
+  ".html":   "text/html",       // html
+  ".htm":    "text/html",       // html
+  ".css":    "text/css",        // css
+  ".js":     "text/javascript", // javascript
+  ".mjs":    "text/javascript", // javascript
+  ".svg":    "image/svg+xml",   // svg
+  ".xml":    "text/xml",        // xml
+
+  // image
+  ".jpg":  "image/jpeg", // jpeg
+  ".jpeg": "image/jpeg", // jpeg
+  ".png":  "image/png",  // png
+  ".gif":  "image/gif",  // gif
+  ".bmp":  "image/bmp",  // bitmap
+
+  // audio
+  ".mp3":  "audio/mpeg", // mp3
+  ".wav":  "audio/wav",  // wave
+  ".opus": "audio/opus", // opus
+
+  // video
+  ".mp4": "video/mp4", // mp4
+
+  // font
+  ".otf": "font/otf",  // OpenType format
+  ".ttf": "font/ttf",  // TrueType font
+
+  // application data
+  ".zip": "application/zip",             // zip
+  ".7z":  "application/x-7z-compressed", // 7zip
+  ".pdf": "application/pdf",             // pdf
+}
