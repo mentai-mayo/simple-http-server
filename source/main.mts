@@ -25,7 +25,7 @@ async function main(meta: Meta): Promise<void>{
     'Content-Type': 'text/plain',
   };
 
-  const ContentType: { [ext: string]: string } = JSON.parse(fs.readFileSync(path.resolve(path.dirname((new URL(import.meta.url)).pathname), 'content-type.json'), { encoding: 'utf-8' }));
+  const ContentType: { [ext: string]: string } = JSON.parse(fs.readFileSync(path.resolve(path.dirname(toPath(new URL(import.meta.url))), 'content-type.json'), { encoding: 'utf-8' }));
 
   /**
    * root path
@@ -80,7 +80,7 @@ async function main(meta: Meta): Promise<void>{
 
     // if directory
     if(file == 'directory'){
-      const data: string = fs.readFileSync(path.resolve(path.dirname((new URL(import.meta.url)).pathname), './index.min.html'), { encoding: 'utf-8' });
+      const data: string = fs.readFileSync(path.resolve(path.dirname(toPath(new URL(import.meta.url))), './index.min.html'), { encoding: 'utf-8' });
       const children: { name: string, type: 'api' | 'file' | 'dir' }[] = [];
       fs.readdirSync(filepath).forEach((child: string)=>{
         if(/^(_|\.)/.test(child)) return;
@@ -107,6 +107,12 @@ async function main(meta: Meta): Promise<void>{
   webServer.onRequest = onreq;
 
   webServer.listen();
+}
+
+function toPath(url: URL): string{
+  if(process.platform == 'win32')
+    return url.pathname.replace(/^\//,'');
+  return url.pathname;
 }
 
 export default main;
