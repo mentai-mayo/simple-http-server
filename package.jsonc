@@ -1,0 +1,60 @@
+{
+  // パッケージ名
+  "name": "simple-http-server",
+
+  // バージョン
+  "version": "0.2.0",
+
+  // 説明
+  "discription": "テスト用途とかの簡易httpサーバ",
+
+  // キーワード？
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "http-server",
+  ],
+
+  // npmにはアップロードするが、公開はされない
+  "private": true,
+
+  // エントリポイント require/importもここに解決する
+  "main": "build/shs.js",
+
+  // cli定義
+  "bin": {
+    // コマンド名: エントリーポイント
+    "mylib-cli": "build/shs.js",
+  },
+
+  // npm-script
+  "scripts": {
+  },
+
+  // リポジトリ
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mentai-mayo/simple-http-server.git"
+  },
+
+  // 作者
+  "author": "mentai-mayo",
+
+  // ライセンス
+  "license": "WTFPL",
+
+  // バグ報告
+  "bugs": {
+    "url": "https://github.com/mentai-mayo/simple-http-server/issues"
+  },
+
+  // ホームページ
+  "homepage": "https://github.com/mentai-mayo/simple-http-server#readme",
+
+  // ----- 以下依存パッケージ -----
+
+  "devDependencies": {
+    "@types/node": "^17.0.42",
+    "typescript": "^4.7.3"
+  }
+}
